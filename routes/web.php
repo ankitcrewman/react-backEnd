@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageTextController;
+use App\Http\Controllers\SectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,8 @@ Route::get('/upload', [ImageTextController::class, 'create'])->name('upload.crea
 Route::post('/upload', [ImageTextController::class, 'store'])->name('upload');
 
 Route::post('/upload', [ImageTextController::class, 'store'])->name('upload');
+
+
+Route::get('/sections', [SectionController::class, 'index'])->name('section.index');
+Route::get('/sections/create', [SectionController::class, 'create'])->name('section.create');
+Route::post('/sections', [SectionController::class, 'store'])->name('sections.store');
