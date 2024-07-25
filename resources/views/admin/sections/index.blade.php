@@ -27,7 +27,7 @@
                 @foreach ($sections as $section)
                     <tr>
                         <td>{{ $section->title }}</td>
-                        <td>{{ $section->content }}</td>
+                        <td style="text-align: justify">{{ $section->content }}</td>
                     </tr>
                 @endforeach
             </tbody>

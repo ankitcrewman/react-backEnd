@@ -22,4 +22,9 @@ use App\Http\Controllers\API\SectionController;
 
 
 Route::get('/image-texts', [ImageTextController::class, 'index']);
-Route::get('/sections', [SectionController::class, 'show']);
+// Route::get('/sections', [SectionController::class, 'show']);
+
+
+Route::middleware('throttle:60,1')->group(function () {
+    Route::get('/sections', [SectionController::class, 'show']);
+});
