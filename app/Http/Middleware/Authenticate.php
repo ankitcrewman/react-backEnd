@@ -1,5 +1,5 @@
 <?php
-
+// app/Http/Middleware/Authenticate.php
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
@@ -12,6 +12,22 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        if ($request->expectsJson()) {
+            return null;
+        }
+
+        return "";
+    }
+
+    /**
+     * Handle an unauthorized request.
+     */
+    protected function unauthenticated($request, array $guards)
+    {
+        if ($request->expectsJson()) {
+            abort(response()->json(['message' => 'Unauthorized access. Please log in to continue.'], 401));
+        }
+
+        parent::unauthenticated($request, $guards);
     }
 }

@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/login', function () {
+    return "404";
+});
+
 Route::get('/upload', [ImageTextController::class, 'create'])->name('upload.create');
 Route::post('/upload', [ImageTextController::class, 'store'])->name('upload');
 

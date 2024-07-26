@@ -27,10 +27,10 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 // Auth
-Route::get('/image-texts', [ImageTextController::class, 'index']);
-// Route::get('/sections', [SectionController::class, 'show']);
-
-
-Route::middleware('throttle:60,1')->group(function () {
-    Route::get('/sections', [SectionController::class, 'show']);
+// Protected routes
+Route::middleware('auth:api')->group(function () {
+    Route::get('/image-texts', [ImageTextController::class, 'index']);
+    Route::middleware('throttle:60,1')->group(function () {
+        Route::get('/sections', [SectionController::class, 'show']);
+    });
 });
