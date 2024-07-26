@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ImageTextController;
 use App\Http\Controllers\API\SectionController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ use App\Http\Controllers\API\SectionController;
 // });
 
 
+// Auth
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+// Auth
 Route::get('/image-texts', [ImageTextController::class, 'index']);
 // Route::get('/sections', [SectionController::class, 'show']);
 
