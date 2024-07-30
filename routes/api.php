@@ -28,9 +28,10 @@ Route::post('login', [AuthController::class, 'login']);
 
 // Auth
 // Protected routes
-Route::middleware('auth:api')->group(function () {
-    Route::get('/image-texts', [ImageTextController::class, 'index']);
-    Route::middleware('throttle:60,1')->group(function () {
-        Route::get('/sections', [SectionController::class, 'show']);
-    });
-});
+Route::get('/image-texts', [ImageTextController::class, 'index']);
+Route::get('/sections', [SectionController::class, 'show']);
+
+// Route::middleware('throttle:60,1')->group(function () {
+// });
+// Route::middleware('auth:api')->group(function () {
+// });
